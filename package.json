@@ -4,7 +4,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch index.js",
+    "run": "node index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,7 @@
     "@api/holded": "file:.api/apis/holded",
     "axios": "^1.8.4",
     "dotenv": "^16.4.7",
-    "nodemailer": "^6.10.0"
+    "nodemailer": "^6.10.0",
+    "xlsx": "^0.18.5"
   }
 }
