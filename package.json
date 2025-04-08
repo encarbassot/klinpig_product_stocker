@@ -1,0 +1,26 @@
+{
+  "name": "klinpig_product_stocker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/encarbassot/klinpig_product_stocker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/encarbassot/klinpig_product_stocker/issues"
+  },
+  "homepage": "https://github.com/encarbassot/klinpig_product_stocker#readme",
+  "description": "",
+  "dependencies": {
+    "@api/holded": "file:.api/apis/holded",
+    "axios": "^1.8.4",
+    "dotenv": "^16.4.7",
+    "nodemailer": "^6.10.0"
+  }
+}
