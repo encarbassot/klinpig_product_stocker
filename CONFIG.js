@@ -2,7 +2,7 @@
 
 
 
-export const EMAIL_TO = ["paolo.campos@klinpig.com","eloi.fabrega@panotmobility.com"] // ["correo1@example.com", "correo2@example.com", ...]
+export const EMAIL_TO = ["paolo.campos@klinpig.com"] // ["correo1@example.com", "correo2@example.com", ...]
 
 
 
