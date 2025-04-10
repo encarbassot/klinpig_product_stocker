@@ -1,9 +1,9 @@
 import axios from 'axios';
+import {ORDER, PARAMETERS, WEAREHOUSE_ID} from "../CONFIG.js"
 
 const API_KEY = process.env.API_KEY;
 
 const BASE_URL = 'https://api.holded.com/api/invoicing/v1';
-const WEAREHOUSE_ID = "67a9e05ac0b38982de0348d8"
 
 
 const routes = {
@@ -51,10 +51,40 @@ export const getStocks = async () => {
 
   const products = await Promise.all(
     warehouse.products.map( async ({stock,product_id})=>{
-      const {name,barcode,cost,price} = await getProductById(product_id)
-      return {name,barcode,stock,cost,price}
+      const product = await getProductById(product_id)
+      product.stock = stock
+
+      const result = {};
+
+      for (const [columnName, value] of Object.entries(PARAMETERS)) {
+        if (typeof value === "function") {
+          result[columnName] = value(product);
+        } else {
+          result[columnName] = product[value];
+        }
+      }
+
+      return result;
     })
   )
 
-  return products  
+  
+  const [orderKey, orderList] = Object.entries(ORDER)[0];
+
+  const sorted = products.sort((a, b) => {
+    const aValue = a[PARAMETERS[orderKey]];
+    const bValue = b[PARAMETERS[orderKey]];
+  
+    const aIndex = orderList.indexOf(aValue);
+    const bIndex = orderList.indexOf(bValue);
+  
+    const aPos = aIndex === -1 ? Number.MAX_SAFE_INTEGER : aIndex;
+    const bPos = bIndex === -1 ? Number.MAX_SAFE_INTEGER : bIndex;
+  
+    return aPos - bPos;
+  });
+
+
+  return sorted
+
 };

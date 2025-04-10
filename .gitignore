@@ -3,3 +3,4 @@ products.json
 stocks.json
 
 node_modules/
+exports/
