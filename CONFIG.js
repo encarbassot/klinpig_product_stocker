@@ -2,22 +2,33 @@
 
 
 
-export const EMAIL_TO = ["paolo.campos@klinpig.com"] // ["correo1@example.com", "correo2@example.com", ...]
+// 📨 Correos a los que se enviará el fichero de stock por email.
+// Puedes añadir más correos en el array:
+export const EMAIL_TO = [
+  "paolo.campos@klinpig.com"
+  // "otrocorreo@ejemplo.com",
+  // "ejemplo3@klinpig.com"
+];
 
 
 
+// 📦 ID del almacén desde donde se consulta el stock.
+export const WEAREHOUSE_ID = "67a9e05ac0b38982de0348d8" // KLINPIG, S.L Almacén
 // id: '67ab5c1d82a2051b2808dc72', name: 'AMAZON',
 // id: '67ab5b9fe2b5407f6200f172', name: 'AMPHORA LOGISTICS',
 // id: '67cb0552c07e7c35f005efe2', name: 'KLINPIG DECATHLON',
 // id: '67a9e05ac0b38982de0348d8', name: 'KLINPIG, S.L Almacén',
-export const WEAREHOUSE_ID = "67a9e05ac0b38982de0348d8"
 
-export const FILE_NAME = ()=>{
-  const today = new Date().toISOString().split('T')[0]; // 2025-4-13
+
+
+// 🧾 Nombre del archivo exportado.
+// El nombre incluirá la fecha actual automáticamente.
+export const FILE_NAME = () => {
+  const today = new Date().toISOString().split('T')[0]; // Ej: "2025-04-13"
   return `stock-klinpig-tradein-${today}.xlsx`;
-}
+};
 
-
+// 📋 Definición de columnas del Excel.
 export const PARAMETERS = {
   "EAN": "barcode",
   "CANTIDAD": "stock",
@@ -59,7 +70,9 @@ export const PARAMETERS = {
 
 
 
-
+// 🔢 Orden personalizado para las filas del Excel.
+// Aquí defines en qué orden deben aparecer los productos, usando una columna como referencia.
+// Si algún producto no está en la lista, aparecerá al final.
 export const ORDER = {
   EAN:[
   "8437024054139",
